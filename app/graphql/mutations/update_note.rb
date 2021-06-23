@@ -9,8 +9,8 @@ module Mutations
 
       begin
         note = Note.find(note_params[:id])
-        note.title = note_params[:title]
-        note.body = note_params[:body]
+        note.title ||= note_params[:title]
+        note.body ||= note_params[:body]
         note.save!
 
         # The resolve method in a mutation must return a hash whose symbol matches the field name.
